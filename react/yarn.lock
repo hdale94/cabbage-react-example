@@ -999,10 +999,10 @@ browserslist@^4.24.0:
     node-releases "^2.0.19"
     update-browserslist-db "^1.1.1"
 
-cabbage-react@^1.0.0-beta.6:
-  version "1.0.0-beta.6"
-  resolved "https://registry.yarnpkg.com/cabbage-react/-/cabbage-react-1.0.0-beta.6.tgz#9b3b53dcd04da21d49844169020edb72ac0b2ee7"
-  integrity sha512-3OBThydHIYYyK0wi9D6M5BmFZazbBlVnh1EA3pzeGcMHu6jIPZ0zPkv2dcK5eCn7RVbhZm4ZCjl6pFn3vzRZaA==
+cabbage-react@^1.0.0-beta.9:
+  version "1.0.0-beta.9"
+  resolved "https://registry.yarnpkg.com/cabbage-react/-/cabbage-react-1.0.0-beta.9.tgz#f3cf4b430ac1c4fcdcd5ed1eeeab7e5f2c259dff"
+  integrity sha512-IWkwZohkgHm72lMXNZpFyp2WSBZ3sR+ZJ7utZyIJ3wy9kxPterDTOmqrP82hHXBT+7ptpT6hdW4uVju+5z7EOg==
   dependencies:
     react "^19.1.0"
     vite-plugin-dts "^4.5.3"
