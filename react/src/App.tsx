@@ -2,16 +2,18 @@ import "./App.css";
 import RangeSlider from "./components/RangeSlider";
 import RotarySlider from "./components/RotarySlider";
 import VerticalSlider from "./components/VerticalSlider";
-import { useGetCabbageFormData } from "cabbage-react";
+import { useCabbageProperties } from "cabbage-react";
 
 function App() {
-	const { data: formData } = useGetCabbageFormData();
+	const { properties } = useCabbageProperties("MainForm");
+
+	console.log("properties", properties);
 
 	return (
 		<div
 			style={{
-				width: formData?.size?.width ?? 580,
-				height: formData?.size?.height ?? 500,
+				width: properties?.size?.width ?? 580,
+				height: properties?.size?.height ?? 500,
 			}}
 		>
 			<VerticalSlider channel={"gainL1"} paramIdx={0} />

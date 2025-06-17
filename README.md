@@ -28,7 +28,7 @@ There are examples of functional components (sliders) that implement the useCabb
 
 ### Run project:
 
-    yarn run dev
+    yarn dev
 
 ### Build project:
 

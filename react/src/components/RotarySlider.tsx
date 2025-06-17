@@ -1,5 +1,5 @@
 import { DetailedHTMLProps, InputHTMLAttributes, SVGProps } from "react";
-import { useCabbageState } from "cabbage-react";
+import { useCabbageProperties, useCabbageState } from "cabbage-react";
 
 interface RotarySliderProps {
 	channel: string;
@@ -21,11 +21,12 @@ const RotarySlider = ({
 	svgContainerProps,
 	circleProps,
 }: RotarySliderProps) => {
-	const { value, setValue, data } = useCabbageState<number>(channel, paramIdx);
+	const { properties } = useCabbageProperties(channel);
+	const { value, setValue } = useCabbageState<number>(channel, paramIdx);
 	const valueAsNumber = value ?? 0;
 
-	const min = data?.range?.min ?? 0;
-	const max = data?.range?.max ?? 1;
+	const min = properties?.range?.min ?? 0;
+	const max = properties?.range?.max ?? 1;
 
 	const diameter = 50; // Diameter of the outer circle
 	const svgSize = diameter * 0.9; // Size of the SVG container

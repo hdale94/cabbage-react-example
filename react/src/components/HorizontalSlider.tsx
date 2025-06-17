@@ -1,5 +1,5 @@
 import { InputHTMLAttributes } from "react";
-import { useCabbageState } from "cabbage-react";
+import { useCabbageProperties, useCabbageState } from "cabbage-react";
 
 const HorizontalSlider = ({
 	channel,
@@ -10,15 +10,16 @@ const HorizontalSlider = ({
 	paramIdx: number;
 	inputProps?: InputHTMLAttributes<HTMLInputElement>;
 }) => {
-	const { value, setValue, data } = useCabbageState<number>(channel, paramIdx);
+	const { properties } = useCabbageProperties(channel);
+	const { value, setValue } = useCabbageState<number>(channel, paramIdx);
 
 	return (
 		<div>
 			<input
 				type="range"
-				min={data?.range?.min ?? 0}
-				max={data?.range?.max ?? 1}
-				step={data?.range?.increment ?? 0.01}
+				min={properties?.range?.min ?? 0}
+				max={properties?.range?.max ?? 1}
+				step={properties?.range?.increment ?? 0.01}
 				value={value}
 				onChange={(e) => setValue(e.target.valueAsNumber)}
 				{...inputProps}

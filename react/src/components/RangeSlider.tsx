@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
-import { useCabbageState } from "cabbage-react";
+import { useCabbageProperties, useCabbageState } from "cabbage-react";
 
 interface RangeSliderProps {
 	channelStart: string;
@@ -18,15 +18,16 @@ const RangeSlider = ({
 	width = 200,
 	height = 100,
 }: RangeSliderProps) => {
+	const { properties: startProperties } = useCabbageProperties(channelStart);
+	const { properties: endProperties } = useCabbageProperties(channelEnd);
+
 	const {
 		value: valueStart,
 		setValue: setValueStart,
-		data: startData,
 	} = useCabbageState<number>(channelStart, paramIdxStart);
 	const {
 		value: valueEnd,
 		setValue: setValueEnd,
-		data: endData,
 	} = useCabbageState<number>(channelEnd, paramIdxEnd);
 
 	// Refs for the SVG elements
@@ -37,8 +38,8 @@ const RangeSlider = ({
 	// Mouse drag state
 	const [dragging, setDragging] = useState<"start" | "end" | null>(null);
 
-	const min = startData?.range?.min ?? 0;
-	const max = endData?.range?.max ?? 1;
+	const min = startProperties?.range?.min ?? 0;
+	const max = endProperties?.range?.max ?? 1;
 
 	const handleMouseDown = (
 		e: React.MouseEvent<SVGCircleElement>,
