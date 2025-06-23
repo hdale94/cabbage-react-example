@@ -16,19 +16,16 @@ const RangeSlider = ({
 	channelEnd,
 	paramIdxEnd,
 	width = 200,
-	height = 100,
 }: RangeSliderProps) => {
 	const { properties: startProperties } = useCabbageProperties(channelStart);
 	const { properties: endProperties } = useCabbageProperties(channelEnd);
 
-	const {
-		value: valueStart,
-		setValue: setValueStart,
-	} = useCabbageState<number>(channelStart, paramIdxStart);
-	const {
-		value: valueEnd,
-		setValue: setValueEnd,
-	} = useCabbageState<number>(channelEnd, paramIdxEnd);
+	const { value: valueStart, setValue: setValueStart } =
+		useCabbageState<number>(channelStart, paramIdxStart);
+	const { value: valueEnd, setValue: setValueEnd } = useCabbageState<number>(
+		channelEnd,
+		paramIdxEnd
+	);
 
 	// Refs for the SVG elements
 	const svgRef = useRef<SVGSVGElement | null>(null);
@@ -97,19 +94,30 @@ const RangeSlider = ({
 	const endPosition = scaleValueToPosition(valueEnd ?? max);
 
 	return (
-		<div>
+		<div
+			style={{
+				display: "flex",
+				width: width,
+				flexDirection: "column",
+				justifyContent: "center",
+				alignItems: "center",
+			}}
+		>
+			{/* Label */}
+			<p style={{ marginBottom: "4px" }}>{startProperties?.text ?? "Label"}</p>
+
 			<svg
 				ref={svgRef}
 				width={width + 20} // Increase SVG width to accommodate handles
-				height={height + 20} // Increase SVG height to accommodate handles
+				height={20} // Increase SVG height to accommodate handles
 			>
 				{/* Track (Line) */}
 				<line
 					x1={10} // Adjust to provide space for the left handle
-					y1={width / 2 + 10} // Adjust to center vertically within the increased height
+					y1={10} // Adjust to center vertically within the increased height
 					x2={width + 10} // Increase width to accommodate handles on both sides
-					y2={width / 2 + 10}
-					stroke="#ddd"
+					y2={10}
+					stroke={"rgb(53, 60, 74)"}
 					strokeWidth="8"
 					strokeLinecap="round"
 				/>
@@ -117,9 +125,9 @@ const RangeSlider = ({
 				<circle
 					ref={startHandleRef}
 					cx={startPosition + 10} // Shift handle position within new space
-					cy={width / 2 + 10} // Adjust vertical position to center
+					cy={10} // Adjust vertical position to center
 					r="8"
-					fill="#93d200"
+					fill={"rgb(141, 243, 120)"}
 					onMouseDown={(e) => handleMouseDown(e, "start")}
 					onMouseEnter={() => (startHandleRef.current!.style.opacity = "1")}
 					onMouseLeave={() => (startHandleRef.current!.style.opacity = "0.8")}
@@ -128,9 +136,9 @@ const RangeSlider = ({
 				<circle
 					ref={endHandleRef}
 					cx={endPosition + 10} // Shift handle position within new space
-					cy={width / 2 + 10} // Adjust vertical position to center
+					cy={10} // Adjust vertical position to center
 					r="8"
-					fill="#93d200"
+					fill={"rgb(141, 243, 120)"}
 					onMouseDown={(e) => handleMouseDown(e, "end")}
 					onMouseEnter={() => (endHandleRef.current!.style.opacity = "1")}
 					onMouseLeave={() => (endHandleRef.current!.style.opacity = "0.8")}
@@ -138,7 +146,7 @@ const RangeSlider = ({
 			</svg>
 
 			{/* Displaying the range */}
-			<p style={{ margin: 0 }}>
+			<p style={{ marginTop: "4px" }}>
 				<span>
 					{valueStart} - {valueEnd}
 				</span>

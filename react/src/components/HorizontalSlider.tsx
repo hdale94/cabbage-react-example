@@ -15,6 +15,9 @@ const HorizontalSlider = ({
 
 	return (
 		<div>
+			{/* Label */}
+			<p style={{ marginBottom: "4px" }}>{properties?.text ?? "Label"}</p>
+
 			<input
 				type="range"
 				min={properties?.range?.min ?? 0}
@@ -24,13 +27,14 @@ const HorizontalSlider = ({
 				onChange={(e) => setValue(e.target.valueAsNumber)}
 				{...inputProps}
 				style={{
-					accentColor: "rgb(147,210,0)",
+					accentColor: "rgb(148, 242, 254)",
+					marginTop: "20px",
 					...inputProps?.style,
 				}}
 			/>
 
 			{/* Displaying the value */}
-			<p style={{ margin: 0 }}>{value ?? 0}</p>
+			<p style={{ marginTop: "4px" }}>{value ?? 0}</p>
 		</div>
 	);
 };

@@ -14,7 +14,10 @@ const VerticalSlider = ({
 	const { value, setValue } = useCabbageState<number>(channel, paramIdx);
 
 	return (
-		<div>
+		<div style={{ width: "130px" }}>
+			{/* Label */}
+			<p style={{ marginBottom: "4px" }}>{properties?.text ?? "Label"}</p>
+
 			<input
 				type="range"
 				min={properties?.range?.min ?? 0}
@@ -25,8 +28,8 @@ const VerticalSlider = ({
 				{...inputProps}
 				style={{
 					rotate: "-90deg",
-					accentColor: "rgb(147,210,0)",
-					marginTop: "64px",
+					accentColor: "rgb(148, 242, 254)",
+					marginTop: "60px",
 					...inputProps?.style,
 				}}
 			/>

@@ -1,29 +1,49 @@
+import { useCabbageProperties } from "cabbage-react";
 import "./App.css";
+import Header from "./components/Header";
+import HorizontalSlider from "./components/HorizontalSlider";
 import RangeSlider from "./components/RangeSlider";
 import RotarySlider from "./components/RotarySlider";
-import VerticalSlider from "./components/VerticalSlider";
-import { useCabbageProperties } from "cabbage-react";
 
 function App() {
 	const { properties } = useCabbageProperties("MainForm");
 
-	console.log("properties", properties);
-
 	return (
 		<div
 			style={{
-				width: properties?.size?.width ?? 580,
-				height: properties?.size?.height ?? 500,
+				width: properties?.size?.width ?? 500,
+				height: properties?.size?.height ?? 400,
+				backgroundColor: "rgb(66, 73, 89)",
 			}}
 		>
-			<VerticalSlider channel={"gainL1"} paramIdx={0} />
-			<RotarySlider channel={"gainR1"} paramIdx={1} />
-			<RangeSlider
-				channelStart={"gainL2"}
-				paramIdxStart={2}
-				channelEnd={"gainR2"}
-				paramIdxEnd={3}
-			/>
+			<Header title={"Cabbage React"} />
+			<div
+				style={{
+					display: "flex",
+					flexDirection: "column",
+					alignItems: "center",
+					justifyContent: "center",
+					padding: "16px",
+				}}
+			>
+				<div style={{ display: "flex", gap: "64px" }}>
+					<RotarySlider channel={"Feedback"} paramIdx={0} />
+					<HorizontalSlider channel={"Cutoff"} paramIdx={1} />
+				</div>
+				<div style={{ display: "flex", gap: "64px" }}>
+					<RangeSlider
+						channelStart={"HighPass"}
+						paramIdxStart={2}
+						channelEnd={"LowPass"}
+						paramIdxEnd={3}
+					/>
+					<RotarySlider
+						channel={"Mix"}
+						paramIdx={4}
+						circleProps={{ fill: "white" }}
+					/>
+				</div>
+			</div>
 		</div>
 	);
 }

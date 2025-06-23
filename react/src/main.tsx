@@ -4,8 +4,10 @@ import "./index.css";
 import App from "./App.tsx";
 import { Cabbage } from "cabbage-react";
 
-// Send message to Cabbage to indicate that the UI is ready to load
-Cabbage.sendCustomCommand("cabbageIsReadyToLoad");
+// Notify Cabbage that the UI is ready to receive data
+if (import.meta.env.PROD) {
+	Cabbage.sendCustomCommand("cabbageIsReadyToLoad");
+}
 
 createRoot(document.getElementById("root")!).render(
 	<StrictMode>

@@ -51,7 +51,10 @@ const RotarySlider = ({
 	const { x: circleX, y: circleY } = calculateCirclePositions(angleInDegrees);
 
 	return (
-		<div>
+		<div style={{ width: "54px" }}>
+			{/* Label */}
+			<p style={{ marginBottom: "4px" }}>{properties?.text ?? "Label"}</p>
+
 			<div
 				{...outerContainerProps}
 				style={{
@@ -59,9 +62,9 @@ const RotarySlider = ({
 					width: `${diameter}px`,
 					height: `${diameter}px`,
 					borderRadius: "50%",
-					border: "5px solid rgb(147,210,0)",
+					border: "2px solid rgb(16, 19, 22)",
 					overflow: "hidden",
-					backgroundColor: "white",
+					backgroundColor: "rgb(53, 60, 74)",
 					...outerContainerProps?.style,
 				}}
 			>
@@ -83,7 +86,7 @@ const RotarySlider = ({
 						cx={circleX}
 						cy={circleY}
 						r={circleRadius}
-						fill="black"
+						fill={"rgb(226, 107, 110)"}
 						{...circleProps}
 					/>
 				</svg>
@@ -110,7 +113,7 @@ const RotarySlider = ({
 			</div>
 
 			{/* Displaying the value */}
-			<p style={{ margin: 0, width: diameter + 10 }}>{value ?? 0}</p>
+			<p style={{ marginTop: "4px" }}>{value ?? 0}</p>
 		</div>
 	);
 };

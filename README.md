@@ -1,5 +1,7 @@
 # Cabbage React example
 
+![alt text](image.png)
+
 This example will show you how to synchronize a [Cabbage](https://cabbageaudio.com/) project with a [React](https://github.com/facebook/react) using [cabbage-react](https://github.com/hdale94/cabbage-react).
 
 The React project is built with Vite and TypeScript.
