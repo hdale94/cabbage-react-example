@@ -4,8 +4,8 @@ import "./index.css";
 import App from "./App.tsx";
 import { Cabbage } from "cabbage-react";
 
-// Notify Cabbage that the UI is ready to receive data
 if (import.meta.env.PROD) {
+	// Notify Cabbage that the UI is ready to receive data
 	Cabbage.sendCustomCommand("cabbageIsReadyToLoad");
 }
 
